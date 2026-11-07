@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>متجر نور | تسوق بأناقة</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===== الهيدر ===== -->
+    <header>
+      <div class="container nav">
+        <div class="logo">متجر <span>نور</span></div>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#products">المنتجات</a></li>
+          <li><a href="#features">لماذا نحن</a></li>
+          <li><a href="#contact">تواصل</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="cart-btn" onclick="openCart()">
+            🛒 السلة (<span id="cartCount">0</span>)
+          </button>
+          <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== الهيرو ===== -->
+    <section class="hero">
+      <div class="container">
+        <h1>تسوق <span>بأناقة</span> وبساطة</h1>
+        <p>
+          منتجات مختارة بعناية، توصيل سريع، وأسعار تناسبك. جودة عالية مع تجربة
+          تسوق سهلة.
+        </p>
+        <a href="#products" class="btn">تصفح المنتجات</a>
+      </div>
+    </section>
+
+    <!-- ===== المنتجات ===== -->
+    <section class="section" id="products">
+      <div class="container">
+        <h2 class="section-title">منتجاتنا</h2>
+        <p class="section-sub">اختر من مجموعة منتجاتنا المميزة</p>
+
+        <div class="filters">
+          <button
+            class="filter-btn active"
+            onclick="filterProducts('all', this)"
+          >
+            الكل
+          </button>
+          <button
+            class="filter-btn"
+            onclick="filterProducts('electronics', this)"
+          >
+            إلكترونيات
+          </button>
+          <button class="filter-btn" onclick="filterProducts('fashion', this)">
+            أزياء
+          </button>
+          <button class="filter-btn" onclick="filterProducts('home', this)">
+            المنزل
+          </button>
+        </div>
+
+        <div class="products" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===== المميزات ===== -->
+    <section class="section features" id="features">
+      <div class="container">
+        <h2 class="section-title">لماذا تختارنا؟</h2>
+        <p class="section-sub">نضع راحتك في المقام الأول</p>
+        <div class="features-grid">
+          <div class="feature">
+            <div class="icon">🚚</div>
+            <h3>توصيل سريع</h3>
+            <p>شحن مجاني للطلبات فوق 300 جنيه</p>
+          </div>
+          <div class="feature">
+            <div class="icon">🔒</div>
+            <h3>دفع آمن</h3>
+            <p>جميع المعاملات مشفرة ومحمية</p>
+          </div>
+          <div class="feature">
+            <div class="icon">↩️</div>
+            <h3>إرجاع مجاني</h3>
+            <p>إمكانية الإرجاع خلال 14 يوماً</p>
+          </div>
+          <div class="feature">
+            <div class="icon">💬</div>
+            <h3>دعم 24/7</h3>
+            <p>فريقنا جاهز لمساعدتك دائماً</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== النشرة ===== -->
+    <section class="newsletter">
+      <div class="container">
+        <h2>اشترك في نشرتنا</h2>
+        <p>كن أول من يعرف عن العروض والمنتجات الجديدة</p>
+        <form onsubmit="subscribe(event)">
+          <input type="email" placeholder="بريدك الإلكتروني" required />
+          <button type="submit">اشترك</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== الفوتر ===== -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h4>متجر نور</h4>
+            <p class="footer-desc">
+              وجهتك الأولى للتسوق بأناقة. نقدم منتجات مختارة بعناية لتناسب ذوقك
+              وتلبي احتياجاتك.
+            </p>
+          </div>
+          <div>
+            <h4>روابط سريعة</h4>
+            <ul>
+              <li><a href="#products">المنتجات</a></li>
+              <li><a href="#features">لماذا نحن</a></li>
+              <li><a href="#">سياسة الإرجاع</a></li>
+              <li><a href="#">الشروط والأحكام</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>تواصل معنا</h4>
+            <ul>
+              <li>📧 info@noorstore.com</li>
+              <li>📱 +20 100 000 0000</li>
+              <li>📍 القاهرة، مصر</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2025 متجر نور. جميع الحقوق محفوظة.</div>
+      </div>
+    </footer>
+
+    <!-- ===== سلة التسوق ===== -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-panel" id="cartPanel">
+      <div class="cart-header">
+        <h3>سلة التسوق</h3>
+        <button class="close-cart" onclick="closeCart()">✕</button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <p class="cart-empty">سلة التسوق فارغة</p>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>الإجمالي:</span>
+          <span id="cartTotal">0 ج.م</span>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">إتمام الشراء</button>
+      </div>
+    </div>
+
+    <!-- ===== إشعار ===== -->
+    <div class="toast" id="toast">تمت الإضافة إلى السلة ✓</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
